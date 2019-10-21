@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB01A9B3235DBDCC00466900 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB01A9B2235DBDCC00466900 /* Configuration.swift */; };
 		FB155895235DB0B4005B3EE9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB155894235DB0B4005B3EE9 /* AppDelegate.swift */; };
 		FB155897235DB0B4005B3EE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB155896235DB0B4005B3EE9 /* ViewController.swift */; };
 		FB15589A235DB0B4005B3EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB155898235DB0B4005B3EE9 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB01A9B2235DBDCC00466900 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		FB155891235DB0B4005B3EE9 /* ConnectFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB155894235DB0B4005B3EE9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB155896235DB0B4005B3EE9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				FB155894235DB0B4005B3EE9 /* AppDelegate.swift */,
+				FB1558BA235DBD35005B3EE9 /* Model */,
 				FB155896235DB0B4005B3EE9 /* ViewController.swift */,
 				FB155898235DB0B4005B3EE9 /* Main.storyboard */,
 				FB15589B235DB0B7005B3EE9 /* Assets.xcassets */,
@@ -94,6 +97,14 @@
 				FB1558AB235DB0B7005B3EE9 /* Info.plist */,
 			);
 			path = ConnectFourTests;
+			sourceTree = "<group>";
+		};
+		FB1558BA235DBD35005B3EE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FB01A9B2235DBDCC00466900 /* Configuration.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB01A9B3235DBDCC00466900 /* Configuration.swift in Sources */,
 				FB155897235DB0B4005B3EE9 /* ViewController.swift in Sources */,
 				FB155895235DB0B4005B3EE9 /* AppDelegate.swift in Sources */,
 			);
