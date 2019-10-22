@@ -54,8 +54,8 @@
                                     <action selector="startGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="93T-B7-Myd"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-XT-tVK" userLabel="Game Status Label">
-                                <rect key="frame" x="353" y="893" width="62.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-XT-tVK" userLabel="Game Status Label">
+                                <rect key="frame" x="384" y="903" width="0.0" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="M7A-C7-MFQ"/>
                                 </constraints>

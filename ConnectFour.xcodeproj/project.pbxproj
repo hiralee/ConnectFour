@@ -15,6 +15,9 @@
 		FB15589C235DB0B7005B3EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB15589B235DB0B7005B3EE9 /* Assets.xcassets */; };
 		FB15589F235DB0B7005B3EE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB15589D235DB0B7005B3EE9 /* LaunchScreen.storyboard */; };
 		FB1558AA235DB0B7005B3EE9 /* ConnectFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */; };
+		FB3432D1235F2F300054C257 /* BoardViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */; };
+		FB3432D3235F33FD0054C257 /* ConnectFourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */; };
+		FB3432D5235F38180054C257 /* BoardPositionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D4235F38180054C257 /* BoardPositionConverter.swift */; };
 		FBBFCCE5235DDFC800EA7397 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */; };
 		FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */; };
 		FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */; };
@@ -43,6 +46,9 @@
 		FB1558A5235DB0B7005B3EE9 /* ConnectFourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectFourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourTests.swift; sourceTree = "<group>"; };
 		FB1558AB235DB0B7005B3EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewProtocol.swift; sourceTree = "<group>"; };
+		FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourModel.swift; sourceTree = "<group>"; };
+		FB3432D4235F38180054C257 /* BoardPositionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPositionConverter.swift; sourceTree = "<group>"; };
 		FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexString.swift; sourceTree = "<group>"; };
 		FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerActivityIndicator.swift; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				FB155896235DB0B4005B3EE9 /* BoardViewController.swift */,
+				FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,11 +104,10 @@
 			children = (
 				FB155894235DB0B4005B3EE9 /* AppDelegate.swift */,
 				FB01A9B4235DBEFD00466900 /* FetchConfiguration.swift */,
-				FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */,
-				FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */,
+				FBBFCCEC235F1CC100EA7397 /* Extensions */,
 				FB1558BA235DBD35005B3EE9 /* Model */,
-				FBBFCCE3235DDF9C00EA7397 /* ViewModel */,
 				FB01A9B9235DDD8A00466900 /* View */,
+				FBBFCCE3235DDF9C00EA7397 /* ViewModel */,
 				FB155898235DB0B4005B3EE9 /* Main.storyboard */,
 				FB15589B235DB0B7005B3EE9 /* Assets.xcassets */,
 				FB15589D235DB0B7005B3EE9 /* LaunchScreen.storyboard */,
@@ -123,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				FB01A9B2235DBDCC00466900 /* Configuration.swift */,
+				FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,8 +138,18 @@
 			isa = PBXGroup;
 			children = (
 				FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */,
+				FB3432D4235F38180054C257 /* BoardPositionConverter.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FBBFCCEC235F1CC100EA7397 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */,
+				FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,12 +254,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */,
+				FB3432D3235F33FD0054C257 /* ConnectFourModel.swift in Sources */,
 				FB01A9B3235DBDCC00466900 /* Configuration.swift in Sources */,
 				FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */,
 				FB01A9B5235DBEFD00466900 /* FetchConfiguration.swift in Sources */,
 				FB155897235DB0B4005B3EE9 /* BoardViewController.swift in Sources */,
+				FB3432D5235F38180054C257 /* BoardPositionConverter.swift in Sources */,
 				FB155895235DB0B4005B3EE9 /* AppDelegate.swift in Sources */,
 				FBBFCCE5235DDFC800EA7397 /* BoardViewModel.swift in Sources */,
+				FB3432D1235F2F300054C257 /* BoardViewProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

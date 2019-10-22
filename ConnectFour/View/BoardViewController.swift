@@ -27,34 +27,40 @@ class BoardViewController: UIViewController {
         viewModel = BoardViewModel(view: self)
     }
 
-    func initializeBoardView(playerOne: Player?, playerTwo: Player?) {
-        DispatchQueue.main.async { [unowned self] in
-            self.removeSpinner()
-            self.playerOneLabel.text = playerOne?.name
-            self.playerTwoLabel.text = playerTwo?.name
-        }
-        self.playerOne = playerOne
-        self.playerTwo = playerTwo
-    }
-
     @IBAction func startGame(_ sender: Any) {
         showSpinner(onView: view)
         viewModel?.startGame()
+    }
+
+    func showError(error: Error) {
+        let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
 extension BoardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return BoardDimension.numberOfColumns.rawValue
+        return maxNumberOfColumns
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return BoardDimension.numberOfRows.rawValue
+        return maxNumberOfRows
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellReuseIdentifier = "BoardCell"
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        let counterStatus: CounterColorStatus = viewModel?.board.counterStatus(at: indexPath) ?? .none
+        switch counterStatus {
+        case .none:
+            cell.backgroundColor = .white
+        case .colorOne:
+            cell.backgroundColor = playerOne?.color
+        case .colorTwo:
+            cell.backgroundColor = playerTwo?.color
+        }
+
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 1.0
 
@@ -77,9 +83,51 @@ extension BoardViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func calculateCellWidth() -> CGFloat {
-        let cellCountInARow = CGFloat(BoardDimension.numberOfColumns.rawValue)
+        let cellCountInARow = CGFloat(maxNumberOfColumns)
         let estimatedWidth: CGFloat = (self.view.frame.size.width - cellMargin * cellCountInARow  - cellMargin) / cellCountInARow
         return estimatedWidth
+    }
+}
+
+extension BoardViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.makeMove(indexPath: indexPath)
+    }
+}
+
+extension BoardViewController: BoardViewProtocol {
+    func initializeBoardView(playerOne: Player?, playerTwo: Player?) {
+        self.playerOne = playerOne
+        self.playerTwo = playerTwo
+
+        DispatchQueue.main.async { [unowned self] in
+            self.removeSpinner()
+            self.setInterfaceForPlaying()
+        }
+    }
+
+    func setInterfaceForPlaying() {
+        startGameButton.isEnabled = false
+        playerOneLabel.text = playerOne?.name
+        playerTwoLabel.text = playerTwo?.name
+        board.isUserInteractionEnabled = true
+        gameStatusLabel.text = "\(self.playerOne?.name ?? ""), you go next!"
+    }
+
+    func setInterfaceForGameOver() {
+        startGameButton.isEnabled = true
+        playerOneLabel.text = ""
+        playerTwoLabel.text = ""
+        board.isUserInteractionEnabled = false
+        gameStatusLabel.text = ""
+    }
+
+    func updateGameStatusLabel(with message: String) {
+        gameStatusLabel.text = message
+    }
+
+    func reloadBoardPosition(at indexPath: IndexPath) {
+        board.reloadItems(at: [indexPath])
     }
 }
 
