@@ -4,9 +4,17 @@ class BoardViewController: UIViewController {
 
     @IBOutlet weak var board: UICollectionView!
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var gameStatusLabel: UILabel!
+    @IBOutlet weak var playerOneLabel: UILabel!
+    @IBOutlet weak var playerTwoLabel: UILabel!
+
+    var playerOne: Player?
+    var playerTwo: Player?
 
     let cellMargin: CGFloat = 10.0
-    let boardBottomSpace: CGFloat = 237.0
+    let boardBottomSpace: CGFloat = 237.0 + 86.0
+
+    var viewModel: BoardViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +24,20 @@ class BoardViewController: UIViewController {
     private func setupBoard() {
         board.delegate = self
         board.dataSource = self
+        viewModel = BoardViewModel(view: self)
+    }
+
+    func initializeBoardView(playerOne: Player?, playerTwo: Player?) {
+        DispatchQueue.main.async { [unowned self] in
+            self.playerOneLabel.text = playerOne?.name
+            self.playerTwoLabel.text = playerTwo?.name
+        }
+        self.playerOne = playerOne
+        self.playerTwo = playerTwo
+    }
+
+    @IBAction func startGame(_ sender: Any) {
+        viewModel?.startGame()
     }
 }
 
