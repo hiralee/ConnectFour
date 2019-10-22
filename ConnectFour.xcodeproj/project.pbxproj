@@ -17,6 +17,7 @@
 		FB1558AA235DB0B7005B3EE9 /* ConnectFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */; };
 		FBBFCCE5235DDFC800EA7397 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */; };
 		FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */; };
+		FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		FB1558AB235DB0B7005B3EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexString.swift; sourceTree = "<group>"; };
+		FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				FB155894235DB0B4005B3EE9 /* AppDelegate.swift */,
 				FB01A9B4235DBEFD00466900 /* FetchConfiguration.swift */,
 				FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */,
+				FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */,
 				FB1558BA235DBD35005B3EE9 /* Model */,
 				FBBFCCE3235DDF9C00EA7397 /* ViewModel */,
 				FB01A9B9235DDD8A00466900 /* View */,
@@ -235,6 +238,7 @@
 			files = (
 				FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */,
 				FB01A9B3235DBDCC00466900 /* Configuration.swift in Sources */,
+				FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */,
 				FB01A9B5235DBEFD00466900 /* FetchConfiguration.swift in Sources */,
 				FB155897235DB0B4005B3EE9 /* BoardViewController.swift in Sources */,
 				FB155895235DB0B4005B3EE9 /* AppDelegate.swift in Sources */,

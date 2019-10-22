@@ -29,6 +29,7 @@ class BoardViewController: UIViewController {
 
     func initializeBoardView(playerOne: Player?, playerTwo: Player?) {
         DispatchQueue.main.async { [unowned self] in
+            self.removeSpinner()
             self.playerOneLabel.text = playerOne?.name
             self.playerTwoLabel.text = playerTwo?.name
         }
@@ -37,6 +38,7 @@ class BoardViewController: UIViewController {
     }
 
     @IBAction func startGame(_ sender: Any) {
+        showSpinner(onView: view)
         viewModel?.startGame()
     }
 }
