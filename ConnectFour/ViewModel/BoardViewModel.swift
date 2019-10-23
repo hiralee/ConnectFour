@@ -14,16 +14,6 @@ protocol BoardViewModelProtocol {
 }
 
 class BoardViewModel: NSObject {    
-    enum Directions: Int {
-        case northEast = 0
-        case east
-        case southEast
-        case south
-        case southWest
-        case west
-        case northWest
-    }
-
     var view: BoardViewProtocol?
     var board: Board
     var offset: [BoardPosition]
@@ -50,15 +40,7 @@ extension BoardViewModel: BoardViewModelProtocol {
     func startGame() {
         board = Board()
         view?.reloadBoard()
-        let configurationFetcher = FetchConfiguration()
-        configurationFetcher.fetchRemoteConfiguration { [unowned self] (configuration: Configuration?, error: Error?) in
-            if let configuration = configuration {
-                self.initializePlayers(configuration: configuration)
-            }
-            if let error = error {
-                self.view?.showError(error: error)
-            }
-        }
+        fetchConfiguration()
     }
 
     func makeMove(indexPath: IndexPath) {
@@ -79,6 +61,18 @@ extension BoardViewModel: BoardViewModelProtocol {
     }
 
     // MARK: Private Methods
+
+    private func fetchConfiguration() {
+        FetchConfiguration().fetchRemoteConfiguration { [unowned self] (configuration: Configuration?, error: Error?) in
+            if let configuration = configuration {
+                self.initializePlayers(configuration: configuration)
+            }
+            if let error = error {
+                self.view?.showError(error: error)
+            }
+        }
+    }
+
     private func initializePlayers(configuration: Configuration) {
         let playerOne = Player(name: configuration.name1, color: UIColor(hexString: configuration.color1))
         let playerTwo = Player(name: configuration.name2, color: UIColor(hexString: configuration.color2))
@@ -96,10 +90,10 @@ extension BoardViewModel: BoardViewModelProtocol {
         switch currentPlayerColor {
         case .colorOne:
             currentPlayerColor = .colorTwo
-            view?.updateGameStatusLabel(with: "\(players?[0].name ?? ""), you go next!")
+            view?.updateGameStatusLabel(with: "\(players?[1].name ?? ""), you go next!")
         case .colorTwo:
             currentPlayerColor = .colorOne
-            view?.updateGameStatusLabel(with: "\(players?[1].name ?? ""), you go next!")
+            view?.updateGameStatusLabel(with: "\(players?[0].name ?? ""), you go next!")
         case .none, .colorWin:
             view?.updateGameStatusLabel(with: "")
         }
@@ -135,52 +129,46 @@ extension BoardViewModel: BoardViewModelProtocol {
     }
 
     private func checkWin(at position: BoardPosition, for color: CounterColorState) -> Bool {
-        let southWin = countConsecutiveCounter(color: color, from: position, inDirection: offset[Directions.south.rawValue]) >= 3
-        if southWin {
-            changeWinningCounterColor(at: position)
-            highlightWinnerCounters(color: color, from: position, inDirection: offset[Directions.south.rawValue])
+        var isWin = false
+        let winningDirections: [[Direction]] = [
+            [.south],
+            [.east, .west],
+            [.southEast, .northWest],
+            [.southWest, .northEast]
+        ]
+
+        for winningDirection in winningDirections {
+            isWin = checkForWin(at: position, counterColor: color, directions: winningDirection)
+            if isWin {
+                changeWinningCounterColor(at: position)
+                for direction in winningDirection {
+                    highlightWinnerCounters(color: color, from: position, inDirection: offset[direction.rawValue])
+                }
+                break
+            }
         }
 
-        let eastWestWin = countConsecutiveCounter(color: color, from: position, inDirection: offset[Directions.east.rawValue], offset2: offset[Directions.west.rawValue]) >= 3
-        if eastWestWin {
-            changeWinningCounterColor(at: position)
-            highlightWinnerCounters(color: color, from: position, inDirection: offset[Directions.east.rawValue], offset2: offset[Directions.west.rawValue])
-        }
-
-        let diagonalOneWin = countConsecutiveCounter(color: color, from: position, inDirection: offset[Directions.northWest.rawValue], offset2: offset[Directions.southEast.rawValue]) >= 3
-        if diagonalOneWin {
-            changeWinningCounterColor(at: position)
-            highlightWinnerCounters(color: color, from: position, inDirection: offset[Directions.northWest.rawValue], offset2: offset[Directions.southEast.rawValue])
-        }
-
-        let diagonalTwoWin = countConsecutiveCounter(color: color, from: position, inDirection: offset[Directions.northEast.rawValue], offset2: offset[Directions.southWest.rawValue]) >= 3
-        if diagonalTwoWin {
-            changeWinningCounterColor(at: position)
-            highlightWinnerCounters(color: color, from: position, inDirection: offset[Directions.northEast.rawValue], offset2: offset[Directions.southWest.rawValue])
-        }
-
-        return southWin || eastWestWin || diagonalOneWin || diagonalTwoWin
+        return isWin
     }
 
-    private func countConsecutiveCounter(color: CounterColorState, from currentCounter: BoardPosition, inDirection offset1: BoardPosition, offset2: BoardPosition) -> Int {
-        return countConsecutiveCounter(color: color, from: currentCounter, inDirection: offset1) +
-            countConsecutiveCounter(color: color, from: currentCounter, inDirection: offset2)
+    private func checkForWin(at position: BoardPosition, counterColor: CounterColorState, directions: [Direction]) -> Bool {
+        var consecutiveCounters: Int = 0
+        for direction in directions {
+            consecutiveCounters += countConsecutiveCounter(color: counterColor, from: position, inDirection: offset[direction.rawValue])
+        }
+
+        return consecutiveCounters >= (maxNumberToWin - 1)
     }
 
     private func countConsecutiveCounter(color: CounterColorState, from currentCounter: BoardPosition, inDirection offset: BoardPosition) -> Int {
-        guard let nextOffsetCounter = generateNextOffset(from: currentCounter, inDirection: offset) else { return 0 }
+        guard let nextOffsetCounter = board.generateNextOffset(from: currentCounter, inDirection: offset) else { return 0 }
         guard board.counterExists(at: nextOffsetCounter) && board.counterStatus(at: nextOffsetCounter) == color else { return 0 }
 
         return 1 + countConsecutiveCounter(color: color, from: nextOffsetCounter, inDirection: offset)
     }
 
-    private func highlightWinnerCounters(color: CounterColorState, from currentCounter: BoardPosition, inDirection offset1: BoardPosition, offset2: BoardPosition) {
-        highlightWinnerCounters(color: color, from: currentCounter, inDirection: offset1)
-        highlightWinnerCounters(color: color, from: currentCounter, inDirection: offset2)
-    }
-
     private func highlightWinnerCounters(color: CounterColorState, from currentCounter: BoardPosition, inDirection offset: BoardPosition) {
-        guard let nextOffsetCounter = generateNextOffset(from: currentCounter, inDirection: offset) else { return }
+        guard let nextOffsetCounter = board.generateNextOffset(from: currentCounter, inDirection: offset) else { return }
         guard board.counterExists(at: nextOffsetCounter) && board.counterStatus(at: nextOffsetCounter) == color else { return }
 
         changeWinningCounterColor(at: nextOffsetCounter)
@@ -190,20 +178,5 @@ extension BoardViewModel: BoardViewModelProtocol {
     private func changeWinningCounterColor(at position: BoardPosition) {
         board.columns[position.column].counters[position.row].colour = .colorWin
         view?.reloadBoardPosition(at: BoardPositionConverter.viewPosition(for: position))
-    }
-
-    private func generateNextOffset(from current: BoardPosition, inDirection offset: BoardPosition) -> BoardPosition? {
-        let nextOffsetPosition = BoardPosition(column: current.column + offset.column, row: current.row + offset.row)
-        if isValidBoardPosition(counter: nextOffsetPosition) {
-            return nextOffsetPosition
-        }
-        return nil
-    }
-
-    private func isValidBoardPosition(counter: BoardPosition) -> Bool {
-        if counter.column < 0 || counter.column > (maxNumberOfColumns - 1) || counter.row < 0 || counter.row > (maxNumberOfRows - 1) {
-            return false
-        }
-        return true
     }
 }

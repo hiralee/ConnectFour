@@ -2,6 +2,7 @@ import UIKit
 
 let maxNumberOfColumns = 7
 let maxNumberOfRows = 6
+let maxNumberToWin = 4
 let emptyCounterColor: UIColor = .white
 let winningCounterColor: UIColor = .green
 
@@ -10,6 +11,16 @@ enum CounterColorState: Int {
     case colorTwo
     case colorWin
     case none
+}
+
+enum Direction: Int {
+    case northEast = 0
+    case east
+    case southEast
+    case south
+    case southWest
+    case west
+    case northWest
 }
 
 struct PlayingCounter {
@@ -71,5 +82,20 @@ struct Board {
     func counterStatus(at indexPath : IndexPath) -> CounterColorState {
         let position = BoardPositionConverter.modelPosition(for: indexPath)
         return counterStatus(at: position)
+    }
+
+    func generateNextOffset(from current: BoardPosition, inDirection offset: BoardPosition) -> BoardPosition? {
+        let nextOffsetPosition = BoardPosition(column: current.column + offset.column, row: current.row + offset.row)
+        if isValidBoardPosition(counter: nextOffsetPosition) {
+            return nextOffsetPosition
+        }
+        return nil
+    }
+
+    private func isValidBoardPosition(counter: BoardPosition) -> Bool {
+        if counter.column < 0 || counter.column > (maxNumberOfColumns - 1) || counter.row < 0 || counter.row > (maxNumberOfRows - 1) {
+            return false
+        }
+        return true
     }
 }
