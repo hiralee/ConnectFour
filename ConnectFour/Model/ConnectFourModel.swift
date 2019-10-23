@@ -2,15 +2,18 @@ import UIKit
 
 let maxNumberOfColumns = 7
 let maxNumberOfRows = 6
+let emptyCounterColor: UIColor = .white
+let winningCounterColor: UIColor = .green
 
-enum CounterColorStatus :Int {
-    case none = 0
-    case colorOne
+enum CounterColorState: Int {
+    case colorOne = 0
     case colorTwo
+    case colorWin
+    case none
 }
 
 struct PlayingCounter {
-    var colour : CounterColorStatus
+    var colour : CounterColorState
 }
 
 struct Column {
@@ -52,12 +55,12 @@ struct Board {
         return columns[position.column].counters[position.row]
     }
 
-    func counter(at indexPath : IndexPath) -> PlayingCounter{
+    func counter(at indexPath: IndexPath) -> PlayingCounter {
         let position = BoardPositionConverter.modelPosition(for: indexPath)
         return counter(at: position)
     }
 
-    func counterStatus(at position: BoardPosition) -> CounterColorStatus {
+    func counterStatus(at position: BoardPosition) -> CounterColorState {
         guard (counterExists(at: position) == true) else {
             return .none
         }
@@ -65,7 +68,7 @@ struct Board {
         return counter.colour
     }
 
-    func counterStatus(at indexPath : IndexPath) -> CounterColorStatus {
+    func counterStatus(at indexPath : IndexPath) -> CounterColorState {
         let position = BoardPositionConverter.modelPosition(for: indexPath)
         return counterStatus(at: position)
     }
