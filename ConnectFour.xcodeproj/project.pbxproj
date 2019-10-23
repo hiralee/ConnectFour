@@ -18,6 +18,8 @@
 		FB3432D1235F2F300054C257 /* BoardViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */; };
 		FB3432D3235F33FD0054C257 /* ConnectFourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */; };
 		FB3432D5235F38180054C257 /* BoardPositionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D4235F38180054C257 /* BoardPositionConverter.swift */; };
+		FB3432D723604A360054C257 /* BoardViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D623604A360054C257 /* BoardViewControllerDataSource.swift */; };
+		FB3432D923604A8D0054C257 /* BoardViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D823604A8D0054C257 /* BoardViewControllerDelegate.swift */; };
 		FBBFCCE5235DDFC800EA7397 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */; };
 		FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */; };
 		FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */; };
@@ -49,6 +51,8 @@
 		FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewProtocol.swift; sourceTree = "<group>"; };
 		FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourModel.swift; sourceTree = "<group>"; };
 		FB3432D4235F38180054C257 /* BoardPositionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPositionConverter.swift; sourceTree = "<group>"; };
+		FB3432D623604A360054C257 /* BoardViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewControllerDataSource.swift; sourceTree = "<group>"; };
+		FB3432D823604A8D0054C257 /* BoardViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewControllerDelegate.swift; sourceTree = "<group>"; };
 		FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexString.swift; sourceTree = "<group>"; };
 		FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerActivityIndicator.swift; sourceTree = "<group>"; };
@@ -75,8 +79,10 @@
 		FB01A9B9235DDD8A00466900 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FB155896235DB0B4005B3EE9 /* BoardViewController.swift */,
 				FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */,
+				FB155896235DB0B4005B3EE9 /* BoardViewController.swift */,
+				FB3432D623604A360054C257 /* BoardViewControllerDataSource.swift */,
+				FB3432D823604A8D0054C257 /* BoardViewControllerDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,9 +261,11 @@
 			files = (
 				FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */,
 				FB3432D3235F33FD0054C257 /* ConnectFourModel.swift in Sources */,
+				FB3432D723604A360054C257 /* BoardViewControllerDataSource.swift in Sources */,
 				FB01A9B3235DBDCC00466900 /* Configuration.swift in Sources */,
 				FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */,
 				FB01A9B5235DBEFD00466900 /* FetchConfiguration.swift in Sources */,
+				FB3432D923604A8D0054C257 /* BoardViewControllerDelegate.swift in Sources */,
 				FB155897235DB0B4005B3EE9 /* BoardViewController.swift in Sources */,
 				FB3432D5235F38180054C257 /* BoardPositionConverter.swift in Sources */,
 				FB155895235DB0B4005B3EE9 /* AppDelegate.swift in Sources */,
