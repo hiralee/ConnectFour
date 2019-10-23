@@ -14,7 +14,6 @@
 		FB15589A235DB0B4005B3EE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB155898235DB0B4005B3EE9 /* Main.storyboard */; };
 		FB15589C235DB0B7005B3EE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB15589B235DB0B7005B3EE9 /* Assets.xcassets */; };
 		FB15589F235DB0B7005B3EE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB15589D235DB0B7005B3EE9 /* LaunchScreen.storyboard */; };
-		FB1558AA235DB0B7005B3EE9 /* ConnectFourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */; };
 		FB3432D1235F2F300054C257 /* BoardViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */; };
 		FB3432D3235F33FD0054C257 /* ConnectFourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */; };
 		FB3432D5235F38180054C257 /* BoardPositionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3432D4235F38180054C257 /* BoardPositionConverter.swift */; };
@@ -23,6 +22,12 @@
 		FBBFCCE5235DDFC800EA7397 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */; };
 		FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */; };
 		FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */; };
+		FBE01D6223606F12006C7FC2 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D6123606F12006C7FC2 /* ConfigurationTests.swift */; };
+		FBE01D652360A2CA006C7FC2 /* ConnectFourModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D642360A2CA006C7FC2 /* ConnectFourModelTests.swift */; };
+		FBE01D682360ABE3006C7FC2 /* UIColorFromHexStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D672360ABE3006C7FC2 /* UIColorFromHexStringTests.swift */; };
+		FBE01D6B2360B033006C7FC2 /* BoardPositionConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D6A2360B033006C7FC2 /* BoardPositionConverterTests.swift */; };
+		FBE01D6D2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D6C2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift */; };
+		FBE01D6F2360CA8A006C7FC2 /* BoardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D6E2360CA8A006C7FC2 /* BoardViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +51,6 @@
 		FB15589E235DB0B7005B3EE9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB1558A0235DB0B7005B3EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB1558A5235DB0B7005B3EE9 /* ConnectFourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConnectFourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourTests.swift; sourceTree = "<group>"; };
 		FB1558AB235DB0B7005B3EE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB3432D0235F2F300054C257 /* BoardViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewProtocol.swift; sourceTree = "<group>"; };
 		FB3432D2235F33FD0054C257 /* ConnectFourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourModel.swift; sourceTree = "<group>"; };
@@ -56,6 +60,12 @@
 		FBBFCCE4235DDFC800EA7397 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexString.swift; sourceTree = "<group>"; };
 		FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerActivityIndicator.swift; sourceTree = "<group>"; };
+		FBE01D6123606F12006C7FC2 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		FBE01D642360A2CA006C7FC2 /* ConnectFourModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourModelTests.swift; sourceTree = "<group>"; };
+		FBE01D672360ABE3006C7FC2 /* UIColorFromHexStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexStringTests.swift; sourceTree = "<group>"; };
+		FBE01D6A2360B033006C7FC2 /* BoardPositionConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPositionConverterTests.swift; sourceTree = "<group>"; };
+		FBE01D6C2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelProtocolTests.swift; sourceTree = "<group>"; };
+		FBE01D6E2360CA8A006C7FC2 /* BoardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +135,9 @@
 		FB1558A8235DB0B7005B3EE9 /* ConnectFourTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB1558A9235DB0B7005B3EE9 /* ConnectFourTests.swift */,
+				FBE01D662360ABC3006C7FC2 /* ExtensionTests */,
+				FBE01D6323606F1F006C7FC2 /* ModelTests */,
+				FBE01D692360AFF0006C7FC2 /* ViewModelTests */,
 				FB1558AB235DB0B7005B3EE9 /* Info.plist */,
 			);
 			path = ConnectFourTests;
@@ -156,6 +168,33 @@
 				FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FBE01D6323606F1F006C7FC2 /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBE01D6123606F12006C7FC2 /* ConfigurationTests.swift */,
+				FBE01D642360A2CA006C7FC2 /* ConnectFourModelTests.swift */,
+			);
+			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		FBE01D662360ABC3006C7FC2 /* ExtensionTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBE01D672360ABE3006C7FC2 /* UIColorFromHexStringTests.swift */,
+			);
+			path = ExtensionTests;
+			sourceTree = "<group>";
+		};
+		FBE01D692360AFF0006C7FC2 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBE01D6C2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift */,
+				FBE01D6A2360B033006C7FC2 /* BoardPositionConverterTests.swift */,
+				FBE01D6E2360CA8A006C7FC2 /* BoardViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +250,7 @@
 					};
 					FB1558A4235DB0B7005B3EE9 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 						TestTargetID = FB155890235DB0B4005B3EE9;
 					};
 				};
@@ -278,7 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB1558AA235DB0B7005B3EE9 /* ConnectFourTests.swift in Sources */,
+				FBE01D6B2360B033006C7FC2 /* BoardPositionConverterTests.swift in Sources */,
+				FBE01D6D2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift in Sources */,
+				FBE01D682360ABE3006C7FC2 /* UIColorFromHexStringTests.swift in Sources */,
+				FBE01D652360A2CA006C7FC2 /* ConnectFourModelTests.swift in Sources */,
+				FBE01D6223606F12006C7FC2 /* ConfigurationTests.swift in Sources */,
+				FBE01D6F2360CA8A006C7FC2 /* BoardViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +512,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ConnectFourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,6 +522,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hiraleemalaviya.ConnectFourTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConnectFour.app/ConnectFour";
@@ -487,6 +534,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ConnectFourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

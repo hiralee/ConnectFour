@@ -20,12 +20,14 @@ class BoardViewModel: NSObject {
     var turnsTaken: Int
     var currentPlayerColor: CounterColorState
     var players: [Player]?
+    var fetchConfiguration: FetchConfigurationProtocol?
 
-    init(view: BoardViewController) {
+    init(view: BoardViewProtocol, fetchConfiguration: FetchConfigurationProtocol = FetchConfiguration()) {
         self.board = Board()
         self.view = view
         self.turnsTaken = 0
         self.currentPlayerColor = .colorOne
+        self.fetchConfiguration = fetchConfiguration
         self.offset = [BoardPosition(column:1, row:1), // northEast
                        BoardPosition(column:1, row:0), // east
                        BoardPosition(column:1 , row:-1), // southEast
@@ -40,7 +42,7 @@ extension BoardViewModel: BoardViewModelProtocol {
     func startGame() {
         board = Board()
         view?.reloadBoard()
-        fetchConfiguration()
+        fetchRemoteConfiguration()
     }
 
     func makeMove(indexPath: IndexPath) {
@@ -62,8 +64,8 @@ extension BoardViewModel: BoardViewModelProtocol {
 
     // MARK: Private Methods
 
-    private func fetchConfiguration() {
-        FetchConfiguration().fetchRemoteConfiguration { [unowned self] (configuration: Configuration?, error: Error?) in
+    private func fetchRemoteConfiguration() {
+        fetchConfiguration?.fetchRemoteConfiguration { [unowned self] (configuration: Configuration?, error: Error?) in
             if let configuration = configuration {
                 self.initializePlayers(configuration: configuration)
             }
