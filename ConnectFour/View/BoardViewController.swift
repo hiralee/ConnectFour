@@ -4,6 +4,7 @@ class BoardViewController: UIViewController {
 
     @IBOutlet weak var board: UICollectionView!
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var endGameButton: UIButton!
     @IBOutlet weak var gameStatusLabel: UILabel!
     @IBOutlet weak var playerOneLabel: UILabel!
     @IBOutlet weak var playerTwoLabel: UILabel!
@@ -22,6 +23,9 @@ class BoardViewController: UIViewController {
     }
 
     private func setupBoard() {
+        startGameButton.isEnabled = true
+        endGameButton.isEnabled = false
+        
         board.delegate = self
         board.dataSource = self
         viewModel = BoardViewModel(view: self)
@@ -30,6 +34,10 @@ class BoardViewController: UIViewController {
     @IBAction func startGame(_ sender: Any) {
         showSpinner(onView: view)
         viewModel?.startGame()
+    }
+
+    @IBAction func endGame(_ sender: Any) {
+        viewModel?.endGame()
     }
 }
 
@@ -46,6 +54,7 @@ extension BoardViewController: BoardViewProtocol {
 
     func setInterfaceForPlaying() {
         startGameButton.isEnabled = false
+        endGameButton.isEnabled = true
         playerOneLabel.text = playerOne?.name
         playerTwoLabel.text = playerTwo?.name
         board.isUserInteractionEnabled = true
@@ -54,6 +63,7 @@ extension BoardViewController: BoardViewProtocol {
 
     func setInterfaceForGameOver() {
         startGameButton.isEnabled = true
+        endGameButton.isEnabled = false
         playerOneLabel.text = ""
         playerTwoLabel.text = ""
         board.isUserInteractionEnabled = false
@@ -71,7 +81,9 @@ extension BoardViewController: BoardViewProtocol {
     }
 
     func reloadBoard() {
-        board.reloadData()
+        DispatchQueue.main.async { [unowned self] in
+            self.board.reloadData()
+        }
     }
 
     func showError(error: Error) {

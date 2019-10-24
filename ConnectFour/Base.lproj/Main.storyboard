@@ -40,10 +40,9 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjO-4y-hKf">
-                                <rect key="frame" x="265.5" y="947" width="237" height="55"/>
+                                <rect key="frame" x="100" y="947" width="241.5" height="55"/>
                                 <color key="backgroundColor" red="0.12005534233975905" green="0.69148720854922274" blue="0.66120474867370793" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="237" id="MLV-N4-KsE"/>
                                     <constraint firstAttribute="height" constant="55" id="ibz-fx-JMO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -95,6 +94,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vp-xf-jCy">
+                                <rect key="frame" x="427" y="947" width="241" height="55"/>
+                                <color key="backgroundColor" red="0.12005534230000001" green="0.69148720850000001" blue="0.66120474870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="5Bc-7F-Ppq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="End Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="endGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MvT-D9-lYK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -102,7 +115,9 @@
                             <constraint firstItem="hOx-t9-bGa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="R1e-pK-MC7" secondAttribute="trailing" constant="402.5" id="8Cc-ia-3eV"/>
                             <constraint firstItem="Vi8-7z-z74" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="945-IN-t58"/>
                             <constraint firstItem="QWc-R1-h4d" firstAttribute="leading" secondItem="Vi8-7z-z74" secondAttribute="trailing" constant="582.5" id="Ead-zQ-xu3"/>
+                            <constraint firstItem="4vp-xf-jCy" firstAttribute="leading" secondItem="WjO-4y-hKf" secondAttribute="trailing" constant="85.5" id="FqF-f0-NRf"/>
                             <constraint firstItem="sbl-NV-U2e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IUh-YY-Ise"/>
+                            <constraint firstItem="WjO-4y-hKf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Ih7-jA-Vdu"/>
                             <constraint firstItem="sbl-NV-U2e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="86" id="LzM-cH-ufw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hOx-t9-bGa" secondAttribute="trailing" constant="20.5" id="Prg-Nu-yQf"/>
                             <constraint firstItem="R1e-pK-MC7" firstAttribute="top" secondItem="Vi8-7z-z74" secondAttribute="bottom" constant="7" id="TX7-t9-yu4"/>
@@ -111,17 +126,20 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WjO-4y-hKf" secondAttribute="bottom" constant="22" id="aun-7g-2vU"/>
                             <constraint firstItem="eKE-XT-tVK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bUv-JE-qYe"/>
                             <constraint firstItem="hOx-t9-bGa" firstAttribute="top" secondItem="QWc-R1-h4d" secondAttribute="bottom" constant="7" id="cHx-ep-Rz3"/>
-                            <constraint firstItem="WjO-4y-hKf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cW9-Zf-k1X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QWc-R1-h4d" secondAttribute="trailing" constant="20" id="fBP-Y4-fCn"/>
+                            <constraint firstItem="WjO-4y-hKf" firstAttribute="width" secondItem="4vp-xf-jCy" secondAttribute="width" id="fhY-5n-Hc4"/>
                             <constraint firstItem="Vi8-7z-z74" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nAw-Qn-tMc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sbl-NV-U2e" secondAttribute="bottom" constant="164" id="pWy-e8-7Hh"/>
                             <constraint firstItem="WjO-4y-hKf" firstAttribute="top" secondItem="eKE-XT-tVK" secondAttribute="bottom" constant="24" id="s97-ew-Ft4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4vp-xf-jCy" secondAttribute="bottom" constant="22" id="uMv-wZ-gDI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4vp-xf-jCy" secondAttribute="trailing" constant="100" id="zl8-tR-kSj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Connect Four" id="GhA-L5-kk2"/>
                     <connections>
                         <outlet property="board" destination="sbl-NV-U2e" id="4zR-gv-4IQ"/>
+                        <outlet property="endGameButton" destination="4vp-xf-jCy" id="QJW-t9-m8K"/>
                         <outlet property="gameStatusLabel" destination="eKE-XT-tVK" id="Kbi-uE-R6L"/>
                         <outlet property="playerOneLabel" destination="R1e-pK-MC7" id="fHF-PX-ESK"/>
                         <outlet property="playerTwoLabel" destination="hOx-t9-bGa" id="I1a-R6-RyZ"/>

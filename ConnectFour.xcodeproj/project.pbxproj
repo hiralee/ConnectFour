@@ -225,8 +225,8 @@
 		FBE01D692360AFF0006C7FC2 /* ViewModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				FBE01D6C2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift */,
 				FBE01D6A2360B033006C7FC2 /* BoardPositionConverterTests.swift */,
+				FBE01D6C2360B1E2006C7FC2 /* BoardViewModelProtocolTests.swift */,
 				FBE01D6E2360CA8A006C7FC2 /* BoardViewModelTests.swift */,
 			);
 			path = ViewModelTests;

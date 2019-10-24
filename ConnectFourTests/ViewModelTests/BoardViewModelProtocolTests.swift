@@ -17,6 +17,10 @@ private class MockBoardViewController: NSObject {
         viewModel?.makeMove(indexPath: IndexPath(item: 0, section: 0))
     }
 
+    func endGame() {
+        viewModel?.endGame()
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,6 +31,7 @@ private class MockBoardViewModel: NSObject, BoardViewModelProtocol {
 
     var startGameCalled = false
     var makeMoveCalled = false
+    var endGameCalled = false
 
     override init() {
         board = Board()
@@ -38,6 +43,10 @@ private class MockBoardViewModel: NSObject, BoardViewModelProtocol {
 
     func makeMove(indexPath: IndexPath) {
         makeMoveCalled = true
+    }
+
+    func endGame() {
+        endGameCalled = true
     }
 }
 
@@ -59,6 +68,11 @@ class BoardViewModelProtocolTests: XCTestCase {
     func testMakeMoveCalled() {
         view?.makeMove()
         XCTAssertTrue(mockBoardViewModel.makeMoveCalled)
+    }
+    
+    func testEndGameIsCalled() {
+        view?.endGame()
+        XCTAssert(mockBoardViewModel.endGameCalled)
     }
 
     override func tearDown() {

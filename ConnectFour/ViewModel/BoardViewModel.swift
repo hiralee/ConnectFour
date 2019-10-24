@@ -11,6 +11,7 @@ protocol BoardViewModelProtocol {
 
     func startGame()
     func makeMove(indexPath: IndexPath)
+    func endGame()
 }
 
 class BoardViewModel: NSObject {    
@@ -60,6 +61,10 @@ extension BoardViewModel: BoardViewModelProtocol {
                 updatePlayer()
             }
         }
+    }
+
+    func endGame() {
+        setGameOver()
     }
 
     // MARK: Private Methods
@@ -120,7 +125,9 @@ extension BoardViewModel: BoardViewModelProtocol {
     }
 
     private func setGameOver() {
+        board = Board()
         view?.setInterfaceForGameOver()
+        view?.reloadBoard()
         turnsTaken = 0
         currentPlayerColor = .colorOne
     }
