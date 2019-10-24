@@ -3,11 +3,20 @@ import XCTest
 
 private class MockFetchConfiguration: FetchConfigurationProtocol {
     var fetchConfigurationCalled = false
+    var showError: Bool = false
+
+    init(showError: Bool) {
+        self.showError = showError
+    }
 
     func fetchRemoteConfiguration(_ completion: @escaping (Configuration?, Error?) -> ()) {
         let config = Configuration(id: 1, color1: "color1", color2: "color2", name1: "name1", name2: "name2")
         fetchConfigurationCalled = true
-        completion(config, nil)
+        if showError {
+            completion(nil, NSError.init() as Error)
+        } else {
+            completion(config, nil)
+        }
     }
 }
 
@@ -52,14 +61,16 @@ private class MockBoardViewController: BoardViewProtocol {
 class BoardViewModelTests: XCTestCase {
     var viewModel: BoardViewModel?
     fileprivate let view = MockBoardViewController()
-    fileprivate let fetchConfiguration = MockFetchConfiguration()
+    fileprivate let fetchConfigurationSuccess = MockFetchConfiguration(showError: false)
+    fileprivate let fetchConfigurationFailure = MockFetchConfiguration(showError: true)
 
     override func setUp() {
         super.setUp()
-        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfiguration)
     }
 
     func testViewModelIsInitialized() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
+
         XCTAssertEqual(viewModel?.turnsTaken, 0)
         XCTAssertEqual(viewModel?.currentPlayerColor, .colorOne)
         XCTAssertEqual(viewModel!.board.columns.count, maxNumberOfColumns)
@@ -69,16 +80,18 @@ class BoardViewModelTests: XCTestCase {
     }
 
     func testStartGame() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
         viewModel?.startGame()
 
         XCTAssertEqual(viewModel!.board.columns.count, maxNumberOfColumns)
         XCTAssertTrue(view.reloadBoardCalled)
-        XCTAssertTrue(fetchConfiguration.fetchConfigurationCalled)
+        XCTAssertTrue(fetchConfigurationSuccess.fetchConfigurationCalled)
         XCTAssertEqual(viewModel?.players?.count, 2)
         XCTAssertTrue(view.initializeBoardViewWithPlayersCalled)
     }
 
     func testWinInHorizontalDirection() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
         viewModel?.board.columns[0].add(PlayingCounter(colour: .colorOne))
         viewModel?.board.columns[1].add(PlayingCounter(colour: .colorOne))
         viewModel?.board.columns[2].add(PlayingCounter(colour: .colorOne))
@@ -92,6 +105,7 @@ class BoardViewModelTests: XCTestCase {
     }
 
     func testWinInVerticalDirection() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
         viewModel?.board.columns[0].add(PlayingCounter(colour: .colorOne))
         viewModel?.board.columns[0].add(PlayingCounter(colour: .colorOne))
         viewModel?.board.columns[0].add(PlayingCounter(colour: .colorOne))
@@ -105,6 +119,7 @@ class BoardViewModelTests: XCTestCase {
     }
 
     func testWinInRisingDiagonalPosition() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
         viewModel?.board.columns[0].add(PlayingCounter(colour: .colorOne))
 
         viewModel?.board.columns[1].add(PlayingCounter(colour: .colorTwo))
@@ -127,6 +142,7 @@ class BoardViewModelTests: XCTestCase {
     }
 
     func testWinInFallingDiagonalPosition() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
         viewModel?.board.columns[3].add(PlayingCounter(colour: .colorOne))
 
         viewModel?.board.columns[2].add(PlayingCounter(colour: .colorTwo))
@@ -146,6 +162,32 @@ class BoardViewModelTests: XCTestCase {
         XCTAssertTrue(view.updateGameStatusLabelCalled)
         XCTAssertTrue(view.setInterfaceForGameOverCalled)
         XCTAssertEqual(viewModel?.currentPlayerColor, .colorOne)
+    }
+
+    func testNoWin() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
+        viewModel?.makeMove(indexPath: BoardPositionConverter.viewPosition(for: BoardPosition(column: 0, row: 0)))
+        XCTAssertTrue(view.reloadBoardPositionCalled)
+        XCTAssertTrue(view.updateGameStatusLabelCalled)
+        XCTAssertEqual(viewModel?.currentPlayerColor, .colorTwo)
+    }
+
+    func testEndGame() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationSuccess)
+        viewModel?.startGame()
+        viewModel?.endGame()
+
+        XCTAssertEqual(viewModel?.turnsTaken, 0)
+        XCTAssertTrue(view.setInterfaceForGameOverCalled)
+        XCTAssertTrue(view.reloadBoardCalled)
+    }
+
+    func testFetchConfigurationFailure() {
+        viewModel = BoardViewModel(view: view, fetchConfiguration: fetchConfigurationFailure)
+        viewModel?.startGame()
+
+        XCTAssertTrue(view.showErrorCalled)
+        XCTAssertTrue(fetchConfigurationFailure.fetchConfigurationCalled)
     }
 
     override func tearDown() {
