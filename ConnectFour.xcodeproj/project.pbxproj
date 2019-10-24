@@ -25,6 +25,7 @@
 		FBBFCCE9235EFE3E00EA7397 /* UIColorFromHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */; };
 		FBBFCCEB235F164900EA7397 /* UIViewControllerActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */; };
 		FBC8DE212360FB7A001AEBDB /* BoardViewControllerSnapshotTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC8DE202360FB7A001AEBDB /* BoardViewControllerSnapshotTest.swift */; };
+		FBC8DE272361D2EE001AEBDB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FBC8DE262361D2EE001AEBDB /* README.md */; };
 		FBE01D6223606F12006C7FC2 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D6123606F12006C7FC2 /* ConfigurationTests.swift */; };
 		FBE01D652360A2CA006C7FC2 /* ConnectFourModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D642360A2CA006C7FC2 /* ConnectFourModelTests.swift */; };
 		FBE01D682360ABE3006C7FC2 /* UIColorFromHexStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE01D672360ABE3006C7FC2 /* UIColorFromHexStringTests.swift */; };
@@ -69,6 +70,7 @@
 		FBBFCCE8235EFE3E00EA7397 /* UIColorFromHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexString.swift; sourceTree = "<group>"; };
 		FBBFCCEA235F164800EA7397 /* UIViewControllerActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerActivityIndicator.swift; sourceTree = "<group>"; };
 		FBC8DE202360FB7A001AEBDB /* BoardViewControllerSnapshotTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewControllerSnapshotTest.swift; sourceTree = "<group>"; };
+		FBC8DE262361D2EE001AEBDB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FBE01D6123606F12006C7FC2 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		FBE01D642360A2CA006C7FC2 /* ConnectFourModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFourModelTests.swift; sourceTree = "<group>"; };
 		FBE01D672360ABE3006C7FC2 /* UIColorFromHexStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorFromHexStringTests.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		FB155888235DB0B4005B3EE9 = {
 			isa = PBXGroup;
 			children = (
+				FBC8DE262361D2EE001AEBDB /* README.md */,
 				FB155893235DB0B4005B3EE9 /* ConnectFour */,
 				FB1558A8235DB0B7005B3EE9 /* ConnectFourTests */,
 				FB155892235DB0B4005B3EE9 /* Products */,
@@ -327,6 +330,7 @@
 			files = (
 				FB15589F235DB0B7005B3EE9 /* LaunchScreen.storyboard in Resources */,
 				FB15589C235DB0B7005B3EE9 /* Assets.xcassets in Resources */,
+				FBC8DE272361D2EE001AEBDB /* README.md in Resources */,
 				FB15589A235DB0B4005B3EE9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
